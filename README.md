@@ -2,7 +2,7 @@
 
 # Sohan Akolkar's Serverless Portfolio
 
-# Technologies used
+# Technologies used in this Project
 
   1. SSH
   2. Git and GitHub
