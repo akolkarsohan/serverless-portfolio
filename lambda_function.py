@@ -8,6 +8,9 @@ def lambda_handler(event, context):
     
     s3 = boto3.resource('s3')
 
+    sns = boto3.resource('sns')
+    topic = sns.Topic('arn:aws:sns:us-east-1:197401872705:portfolioSNSTopic')
+
     portfolio_bucket = s3.Bucket('portfolio.akolkarsohan.com')
     build_bucket = s3.Bucket('portfoliobuild.akolkarsohan.com')
     
@@ -22,5 +25,6 @@ def lambda_handler(event, context):
             portfolio_bucket.Object(nm).Acl().put(ACL='public-read')
     
     print "Job Done!"
+    topic.publish(Subject='Portfolio Deployment', Message = 'Portfolio Deployment is successful.')
     return 'Hello from Lambda'
 
