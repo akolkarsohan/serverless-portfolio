@@ -10,6 +10,7 @@ def lambda_handler(event, context):
     location = {
             "bucketName": 'portfoliobuild.akolkarsohan.com',
             "objectKey": 'portfoliobuild.zip'
+            }
 
     try:
         job = event.get ("Codepipeline.job")
